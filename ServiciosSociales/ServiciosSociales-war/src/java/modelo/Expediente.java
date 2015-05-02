@@ -51,6 +51,9 @@ public class Expediente implements Serializable {
     
     @OneToMany(mappedBy = "expediente")
     private List<Ciudadano> ciudadanos;
+    
+    @OneToMany(mappedBy = "expediente")
+    private List<Intervencion> intervenciones;
 
     public List<Expediente> getExpedientesLigados() {
         return expedientesLigados;
@@ -66,6 +69,14 @@ public class Expediente implements Serializable {
 
     public void setCiudadanos(List<Ciudadano> ciudadanos) {
         this.ciudadanos = ciudadanos;
+    }
+    
+    public List<Intervencion> getIntervenciones() {
+        return this.intervenciones;
+    }
+    
+    public void setIntervenciones(List<Intervencion> intervenciones) {
+        this.intervenciones = intervenciones;
     }
     
     public Long getId() {

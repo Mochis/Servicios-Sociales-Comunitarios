@@ -7,6 +7,7 @@ package beans;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
@@ -25,6 +26,7 @@ import modelo.Persona;
 @SessionScoped
 public class ExpedienteController {
     private Expediente expediente = new Expediente();
+    private Ciudadano ciudadano = new Ciudadano();
     
 //    public ExpedienteController() {
 //    }
@@ -35,6 +37,14 @@ public class ExpedienteController {
     
     public void setExpediente(Expediente expediente) {
         this.expediente = expediente;
+    }
+
+    public Ciudadano getCiudadano() {
+        return ciudadano;
+    }
+
+    public void setCiudadano(Ciudadano ciudadano) {
+        this.ciudadano = ciudadano;
     }
     
     public String verExpediente(){
@@ -70,6 +80,18 @@ public class ExpedienteController {
         ciudadanos[4].getPersona().setApellido1("Molina");
         ciudadanos[4].getPersona().setApellido2("Sanchez");
         this.expediente.setCiudadanos(new ArrayList<Ciudadano>(Arrays.asList(ciudadanos)));
-        return "expediente.xhtml?faces-redirect=true";
+        return "expediente.xhtml";
+    }
+    
+    public String verCiudadano(String dni) {
+        List<Ciudadano> ciudadanos = this.expediente.getCiudadanos();
+        for (Ciudadano ciudadano : ciudadanos) {
+            if(ciudadano.getDni().equals(dni)) {
+                this.ciudadano = ciudadano;
+                return "ciudadano.xhtml";
+            }
+        }
+        this.ciudadano = null;
+        return "ciudadano.xhtml";
     }
 }
