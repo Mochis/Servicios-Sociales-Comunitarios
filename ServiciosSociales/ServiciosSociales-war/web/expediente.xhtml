@@ -1,0 +1,33 @@
+<ui:composition template="/WEB-INF/plantillas/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Expediente #{expedienteController.expediente.id}</ui:define>
+
+    <ui:define name="content">
+        <h:outputLabel value="Expediente #{expedienteController.expediente.id}"/><br/>
+        <h:outputLabel value="Fecha de apertura #{expedienteController.expediente.fechaApertura}"/><br/>
+        <h:outputLabel value="Fecha de cierre #{expedienteController.expediente.fechaCierre}"/><br/>
+        <h:outputLabel value="Estado #{expedienteController.expediente.estado}"/><br/>
+        <h3>Ciudadanos</h3>
+        <h:form>
+                <p:dataTable var="ciudadanos" value="#{expedienteController.expediente.ciudadanos}">
+                    <p:column headerText="DNI">
+                        <h:outputText value="#{ciudadanos.dni}"/>
+                    </p:column>
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{ciudadanos.persona.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Primer apellido">
+                        <h:outputText value="#{ciudadanos.persona.apellido1}"/>
+                    </p:column>
+                    <p:column headerText="Segundo apellido">
+                        <h:outputText value="#{ciudadanos.persona.apellido2}"/>
+                    </p:column>
+                </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
