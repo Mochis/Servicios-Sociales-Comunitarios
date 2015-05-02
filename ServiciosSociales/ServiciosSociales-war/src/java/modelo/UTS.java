@@ -83,7 +83,4 @@ public class UTS implements Serializable {
     public String toString() {
         return "UTS{" + "id=" + id + ", uts=" + uts + ", zona=" + zona + ", css=" + css + '}';
     }
-
-
-    
 }

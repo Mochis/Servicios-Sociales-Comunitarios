@@ -84,14 +84,21 @@ public class ExpedienteController {
     }
     
     public String verCiudadano(String dni) {
+        this.ciudadano = obtenerCiudadano(dni);
+        return "ciudadano.xhtml";
+    }
+    
+    public Ciudadano obtenerCiudadano(String dni) {
         List<Ciudadano> ciudadanos = this.expediente.getCiudadanos();
         for (Ciudadano ciudadano : ciudadanos) {
             if(ciudadano.getDni().equals(dni)) {
-                this.ciudadano = ciudadano;
-                return "ciudadano.xhtml";
+                return ciudadano;
             }
         }
-        this.ciudadano = null;
-        return "ciudadano.xhtml";
+        return null;
+    }
+    
+    public void eliminarCiudadano(String dni) {
+        this.expediente.getCiudadanos().remove(obtenerCiudadano(dni));
     }
 }
