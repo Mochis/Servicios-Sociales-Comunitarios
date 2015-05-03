@@ -41,5 +41,45 @@
             <h:outputLabel value="Fecha nacimiento"/>
             <h:outputText value="#{expedienteController.ciudadano.persona.fechaNacimiento}"/>
         </h:panelGrid>
+        <h:form>
+            <p:dataTable var="parentesco" value="#{expedienteController.ciudadano.parentescos1}">
+                <p:column headerText="DNI">
+                    <p:commandLink action="#{expedienteController.verCiudadano(ciudadanos.dni)}" ajax="false">
+                        <h:outputText value="#{parentesco.ciudadano2.dni}"/>
+                    </p:commandLink>
+                </p:column>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{parentesco.ciudadano2.persona.nombre}"/>
+                </p:column>
+                <p:column headerText="Primer apellido">
+                    <h:outputText value="#{parentesco.ciudadano2.persona.apellido1}"/>
+                </p:column>
+                <p:column headerText="Segundo apellido">
+                    <h:outputText value="#{parentesco.ciudadano2.persona.apellido2}"/>
+                </p:column>
+                <p:column headerText="Parentesco">
+                    <h:outputText value="#{parentesco.parentesco}"/>
+                </p:column>
+            </p:dataTable>
+            <p:dataTable var="parentesco" value="#{expedienteController.ciudadano.parentescos2}">
+                <p:column headerText="DNI">
+                    <p:commandLink action="#{expedienteController.verCiudadano(ciudadanos.dni)}" ajax="false">
+                        <h:outputText value="#{parentesco.ciudadano1.dni}"/>
+                    </p:commandLink>
+                </p:column>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{parentesco.ciudadano1.persona.nombre}"/>
+                </p:column>
+                <p:column headerText="Primer apellido">
+                    <h:outputText value="#{parentesco.ciudadano1.persona.apellido1}"/>
+                </p:column>
+                <p:column headerText="Segundo apellido">
+                    <h:outputText value="#{parentesco.ciudadano1.persona.apellido2}"/>
+                </p:column>
+                <p:column headerText="Parentesco">
+                    <h:outputText value="#{parentesco.parentesco}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
     </ui:define>
 </ui:composition>
